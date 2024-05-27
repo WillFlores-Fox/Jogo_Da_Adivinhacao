@@ -1,0 +1,232 @@
+package jogodaadivinhação;
+
+import java.util.Random;
+import javax.swing.JOptionPane;
+
+public class JogoDaAdivinhação {
+
+    public static void main(String[] args) {
+
+        int saida2 = 0;
+
+        do {
+
+            //aleatoriedade do numero a ser achado
+            Random numero = new Random();
+
+            //tela inicial
+            Object[] opcoes = {"jogar", "sair"};
+            int escolha = JOptionPane.showOptionDialog(null, "Bem Vindo ao Jogo da Adivinhação", "Jogo da Adivinhação 1.0", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[0]);
+            //configurações do jogo e saida
+            if (escolha == 0) {
+                //escolha de dificuldade, aumentando o numero a ser adivinhado  
+                Object[] dificuldade = {"Facil", "Medio", "Dificil", "Impossivel"};
+                int modo = JOptionPane.showOptionDialog(null, "Bem Vindo ao Jogo da Adivinhação", "Jogo da Adivinhação 1.0", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, dificuldade, dificuldade[0]);
+
+                //divisorias das dificuldades
+                switch (modo) {
+                    //dificuldade facil
+                    case 0 -> {
+
+                        //instruções e regras
+                        JOptionPane.showMessageDialog(null, "Você escolheu a dificuldade Facil", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "- Suas tentativas são ilimitadas \n - você tera que acertar um numero entre 1 a 10 \n - a cada erro você receberá uma dica", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
+
+                        //configurações do modo facil
+                        int randomF = numero.nextInt(10);
+
+                        //sistema de chances
+                        for (int chancesf = 1000; chancesf > 0; chancesf--) {
+
+                            //começo do game
+                            String palpite = JOptionPane.showInputDialog(null, "diga um numero de 1 a 10");
+                            int palpite1 = Integer.parseInt(palpite);
+
+                            if (palpite1 == randomF) {
+                                JOptionPane.showMessageDialog(null, "PARABENS!!! Você acertou o numero", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
+
+                                Object[] alt2 = {"sim", "não"};
+                                saida2 = JOptionPane.showOptionDialog(null, "deseja jogar novamente?", "Jogo da Adivinhação 1.0", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, alt2, alt2[0]);
+
+                                if (saida2 == 0) {
+                                    break;
+                                } else if (saida2 == 1) {
+                                    break;
+                                }
+
+                            } else if (palpite1 < randomF && palpite1 >= 1 && palpite1 <= 10) {
+                                JOptionPane.showMessageDialog(null, "Tente um numero maior", "Jogo da Adivinhação 1.0", JOptionPane.QUESTION_MESSAGE);
+                                
+                                //contador de numeor de chances
+                                JOptionPane.showMessageDialog(null, "suas chances são " + chancesf, "Jogo da Adivinhação 1.0", JOptionPane.WARNING_MESSAGE);
+
+                            } else if (palpite1 > randomF && palpite1 >= 1 && palpite1 <= 10) {
+                                JOptionPane.showMessageDialog(null, "Tente um numero menor", "Jogo da Adivinhação 1.0", JOptionPane.QUESTION_MESSAGE);
+                            
+                            } else if (palpite1 < 1 || palpite1 > 10){
+                                JOptionPane.showMessageDialog(null, "ERRO!!", "Jogo da Adivinhação 1.0", JOptionPane.ERROR_MESSAGE);
+                                //punição
+                                JOptionPane.showMessageDialog(null, "Como punição você perderá uma chance");
+                            }
+                        }
+                        JOptionPane.showMessageDialog(null, "GAME OVER", "Jogo da Adivinhação 1.0", JOptionPane.WARNING_MESSAGE);
+                        break;
+                    }
+                    case 1 -> {
+                        //instruções e regras
+                        JOptionPane.showMessageDialog(null, "Você escolheu a dificuldade Média", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "- Suas tentativas são 20 \n - você tera que acertar um numero entre 1 a 30 \n - a cada erro você receberá uma dica", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
+
+                        //configurações do modo medio
+                        int randomM = numero.nextInt(30);
+
+                        //sistema de chances
+                        for (int chancesm = 19; chancesm > 0; chancesm--) {
+
+                            //começo do game
+                            String palpite = JOptionPane.showInputDialog(null, "diga um numero de 1 a 30");
+                            int palpite2 = Integer.parseInt(palpite);
+
+                            //acerto do numero
+                            if (palpite2 == randomM) {
+                                JOptionPane.showMessageDialog(null, "PARABENS!!! Você acertou o numero", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
+
+                                Object[] alt2 = {"sim", "não"};
+                                saida2 = JOptionPane.showOptionDialog(null, "deseja jogar novamente?", "Jogo da Adivinhação 1.0", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, alt2, alt2[0]);
+
+                                if (saida2 == 0) {
+                                    break;
+                                } else if (saida2 == 1) {
+                                    break;
+                                }
+                                //acertar um numero maior
+                            } else if (palpite2 < randomM && palpite2 >= 1 && palpite2 <= 30) {
+                                JOptionPane.showMessageDialog(null, "Tente um numero maior", "Jogo da Adivinhação 1.0", JOptionPane.QUESTION_MESSAGE);
+
+                                //contador de numeor de chances
+                                JOptionPane.showMessageDialog(null, "suas chances são " + chancesm, "Jogo da Adivinhação 1.0", JOptionPane.WARNING_MESSAGE);
+
+                                //acertar um numero menor
+                            } else if (palpite2 > randomM && palpite2 >= 1 && palpite2 <= 30) {
+                                JOptionPane.showMessageDialog(null, "Tente um numero menor", "Jogo da Adivinhação 1.0", JOptionPane.QUESTION_MESSAGE);
+
+                                //contador de numero de chances
+                                JOptionPane.showMessageDialog(null, "suas chances são " + chancesm, "Jogo da Adivinhação 1.0", JOptionPane.WARNING_MESSAGE);
+
+                                //caso coloque um numero que não esta entre 1 e 30
+                            } else if (palpite2 < 1 || palpite2 > 30) {
+                                JOptionPane.showMessageDialog(null, "ERRO!!", "Jogo da Adivinhação 1.0", JOptionPane.ERROR_MESSAGE);
+                                //punição
+                                JOptionPane.showMessageDialog(null, "Como punição você perderá uma chance");
+                            }
+                        }
+                        JOptionPane.showMessageDialog(null, "GAME OVER", "Jogo da Adivinhação 1.0", JOptionPane.WARNING_MESSAGE);
+                        break;
+                    }
+                    case 2 -> {
+                        //instruções e regras
+                        JOptionPane.showMessageDialog(null, "Você escolheu a dificuldade Dificil", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "- Suas tentativas são 10 \n - você tera que acertar um numero entre 1 e 50 \n - a cada erro você receberá uma dica", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
+
+                        //configurações do modo dificil
+                        int randomD = numero.nextInt(50);
+
+                        //sistema de chances
+                        for (int chancesd = 9; chancesd > 0; chancesd--) {
+
+                            //começo do game
+                            String palpite = JOptionPane.showInputDialog(null, "diga um numero de 1 a 50");
+                            int palpite3 = Integer.parseInt(palpite);
+
+                            //acerto do numero
+                            if (palpite3 == randomD) {
+                                JOptionPane.showMessageDialog(null, "PARABENS!!! Você acertou o numero", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
+
+                                Object[] alt2 = {"sim", "não"};
+                                saida2 = JOptionPane.showOptionDialog(null, "deseja jogar novamente?", "Jogo da Adivinhação 1.0", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, alt2, alt2[0]);
+
+                                if (saida2 == 0) {
+                                    break;
+                                } else if (saida2 == 1) {
+                                    break;
+                                }
+                                //acertar um numero maior
+                            } else if (palpite3 < randomD && palpite3 >= 1 && palpite3 <= 50) {
+                                JOptionPane.showMessageDialog(null, "Tente um numero maior", "Jogo da Adivinhação 1.0", JOptionPane.QUESTION_MESSAGE);
+
+                                //contador de numeor de chances
+                                JOptionPane.showMessageDialog(null, "suas chances são " + chancesd, "Jogo da Adivinhação 1.0", JOptionPane.WARNING_MESSAGE);
+
+                                //acertar um numero menor
+                            } else if (palpite3 > randomD && palpite3 >= 1 && palpite3 <= 50) {
+                                JOptionPane.showMessageDialog(null, "Tente um numero menor", "Jogo da Adivinhação 1.0", JOptionPane.QUESTION_MESSAGE);
+
+                                //contador de numero de chances
+                                JOptionPane.showMessageDialog(null, "suas chances são " + chancesd, "Jogo da Adivinhação 1.0", JOptionPane.WARNING_MESSAGE);
+
+                                //caso coloque um numero que não esta entre 1 e 50
+                            } else if (palpite3 < 1 || palpite3 > 50) {
+                                JOptionPane.showMessageDialog(null, "ERRO!!", "Jogo da Adivinhação 1.0", JOptionPane.ERROR_MESSAGE);
+                                
+                            }
+                        }
+                        JOptionPane.showMessageDialog(null, "GAME OVER", "Jogo da Adivinhação 1.0", JOptionPane.WARNING_MESSAGE);
+                        break;
+                    }
+                    case 3 -> {
+                        //instruções e regras
+                        JOptionPane.showMessageDialog(null, "Você escolheu a dificuldade IMPOSSIVEL", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "- Suas tentativas são 5 \n - você tera que acertar um numero de 1 a 100 \n - a cada erro você receberá uma dica", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
+
+                        //configurações do modo facil
+                        int randomI = numero.nextInt(100);
+
+                        //sistema de chances
+                        for (int chancesi = 4; chancesi >= 0; chancesi--) {
+
+                            //começo do game
+                            String palpite = JOptionPane.showInputDialog(null, "diga um numero de 1 a 100");
+                            int palpite4 = Integer.parseInt(palpite);
+
+                            //acerto do numero
+                            if (palpite4 == randomI) {
+                                JOptionPane.showMessageDialog(null, "PARABENS!!! Você acertou o numero", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
+
+                                Object[] alt2 = {"sim", "não"};
+                                saida2 = JOptionPane.showOptionDialog(null, "deseja jogar novamente?", "Jogo da Adivinhação 1.0", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, alt2, alt2[0]);
+
+                                if (saida2 == 0) {
+                                    break;
+                                } else if (saida2 == 1) {
+                                    break;
+                                }
+                                //acertar um numero maior
+                            } else if (palpite4 < randomI && palpite4 >= 1 && palpite4 <= 100) {
+                                JOptionPane.showMessageDialog(null, "Tente um numero maior", "Jogo da Adivinhação 1.0", JOptionPane.QUESTION_MESSAGE);
+
+                                //contador de numeor de chances
+                                JOptionPane.showMessageDialog(null, "suas chances são " + chancesi, "Jogo da Adivinhação 1.0", JOptionPane.WARNING_MESSAGE);
+
+                                //acertar um numero menor
+                            } else if (palpite4 > randomI && palpite4 >= 1 && palpite4 <= 100) {
+                                JOptionPane.showMessageDialog(null, "Tente um numero menor", "Jogo da Adivinhação 1.0", JOptionPane.QUESTION_MESSAGE);
+
+                                //contador de numero de chances
+                                JOptionPane.showMessageDialog(null, "suas chances são " + chancesi, "Jogo da Adivinhação 1.0", JOptionPane.WARNING_MESSAGE);
+
+                                //caso coloque um numero que não esta entre 1 e 100
+                            } else if (palpite4 < 1 || palpite4 > 100) {
+                                JOptionPane.showMessageDialog(null, "ERRO!!", "Jogo da Adivinhação 1.0", JOptionPane.ERROR_MESSAGE);
+                            }
+                        }
+                        JOptionPane.showMessageDialog(null, "GAME OVER", "Jogo da Adivinhação 1.0", JOptionPane.WARNING_MESSAGE);
+                        break;
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Até mais", "Saida", JOptionPane.QUESTION_MESSAGE);
+                break;
+            }
+        } while (saida2 == 0);
+    }
+}
