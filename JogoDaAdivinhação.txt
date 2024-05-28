@@ -5,16 +5,15 @@ import javax.swing.JOptionPane;
 
 public class JogoDaAdivinhação {
 
-    public static void main(String[] args) {
+    public static void Adivinhacao() {
 
         int saida2 = 0;
 
         do {
-            
+
             //cadastro
             String nome = JOptionPane.showInputDialog(null, "Antes de comerçarmos, informe seu nome:", "Jogo da Adivinhação 1.0", JOptionPane.QUESTION_MESSAGE);
-            
-            
+
             //aleatoriedade do numero a ser achado
             Random numero = new Random();
 
@@ -50,7 +49,7 @@ public class JogoDaAdivinhação {
                             if (palpite1 == randomF) {
                                 JOptionPane.showMessageDialog(null, "PARABENS!!! Você acertou o numero", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
                                 JOptionPane.showMessageDialog(null, "Classificação: \n - Total de tentativas: " + tentativasf + "\n - Chances restantes: Ilimitadas");
-                                
+
                                 Object[] alt2 = {"sim", "não"};
                                 saida2 = JOptionPane.showOptionDialog(null, "deseja jogar novamente?", "Jogo da Adivinhação 1.0", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, alt2, alt2[0]);
 
@@ -76,7 +75,7 @@ public class JogoDaAdivinhação {
                             JOptionPane.showMessageDialog(null, "GAME OVER", "Jogo da Adivinhação 1.0", JOptionPane.WARNING_MESSAGE);
                             break;
                         } else if (saida2 == 0) {
-                        JOptionPane.showMessageDialog(null, "vamos lá então", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "vamos lá então", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
                         }
                     }
                     case 1 -> {
@@ -98,7 +97,7 @@ public class JogoDaAdivinhação {
                             if (palpite2 == randomM) {
                                 JOptionPane.showMessageDialog(null, "PARABENS!!! Você acertou o numero", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
                                 JOptionPane.showMessageDialog(null, "Classificação: \n - Total de tentativas: " + tentativasm + "\n - Chances restantes: " + chancesm);
-                                
+
                                 Object[] alt2 = {"sim", "não"};
                                 saida2 = JOptionPane.showOptionDialog(null, "deseja jogar novamente?", "Jogo da Adivinhação 1.0", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, alt2, alt2[0]);
 
@@ -150,7 +149,7 @@ public class JogoDaAdivinhação {
                             if (palpite3 == randomD) {
                                 JOptionPane.showMessageDialog(null, "PARABENS!!! Você acertou o numero", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
                                 JOptionPane.showMessageDialog(null, "Classificação: \n - Total de tentativas: " + tentativasd + "\n - chances restantes: " + chancesd);
-                                
+
                                 Object[] alt2 = {"sim", "não"};
                                 saida2 = JOptionPane.showOptionDialog(null, "deseja jogar novamente?", "Jogo da Adivinhação 1.0", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, alt2, alt2[0]);
 
@@ -201,7 +200,7 @@ public class JogoDaAdivinhação {
                             if (palpite4 == randomI) {
                                 JOptionPane.showMessageDialog(null, "PARABENS!!! Você acertou o numero", "Jogo da Adivinhação 1.0", JOptionPane.INFORMATION_MESSAGE);
                                 JOptionPane.showMessageDialog(null, "Classificação: \n - Total de tentativas: " + tentativasi + "\n - chances restantes: " + chancesi);
-                                
+
                                 Object[] alt2 = {"sim", "não"};
                                 saida2 = JOptionPane.showOptionDialog(null, "deseja jogar novamente?", "Jogo da Adivinhação 1.0", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, alt2, alt2[0]);
 
@@ -235,9 +234,13 @@ public class JogoDaAdivinhação {
                 }
             } else {
                 Object[] saida3 = {"adeus"};
-                JOptionPane.showOptionDialog(null, "Até mais " + nome + "!", "Saida", JOptionPane.DEFAULT_OPTION ,JOptionPane.QUESTION_MESSAGE, null, saida3, saida3[0]);
+                JOptionPane.showOptionDialog(null, "Até mais " + nome + "!", "Saida", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, saida3, saida3[0]);
                 break;
             }
         } while (saida2 == 0);
+    }
+
+    public static void main(String[] args) {
+        Adivinhacao();
     }
 }
